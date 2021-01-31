@@ -1,0 +1,196 @@
+.CardsListItem {
+  width: 100%;
+  display: flex;
+  margin-bottom: 1.5rem;
+  background: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.CardsListItem a:hover {
+  text-decoration: none;
+}
+
+.CardsListItem h2 {
+  font-size: 1.25rem;
+  color: #000;
+  font-weight: 700;
+}
+
+.cardTitle {
+  padding: .5rem 1rem .5rem 1rem;
+}
+
+.actor .username {
+  font-size: 16px;
+}
+
+.flexCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.cardSpacer {
+  height: 50px;
+  margin-top: .5rem;
+}
+
+.cardFooter {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 15px;
+}
+
+.Avatar--mini {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+.Avatar--mini:hover {
+  filter: opacity(.8);
+}
+
+.cardFooter .actor {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.cardFooter .date {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000;
+}
+
+.cardFooter .replies {
+  display: flex;
+  float: right;
+  place-items: center;
+  margin-top: 11px;
+  font-size: 16px;
+}
+
+.commentIcon {
+  display: inline-block;
+  font-size: 20px;
+  margin-right: 5px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cardBadges {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.cardBadge {
+  margin-right: 3px;
+  display: inline-block;
+  padding: 3px 6px 3px 6px;
+  border-radius: 4px 4px 4px 4px;
+  font-size: 11px;
+  text-align: center;
+  width: 28px;
+  line-height: 16px;
+}
+
+.cardTags {
+  margin-left: 15px;
+  display: inline;
+}
+
+.cardTag {
+  display: inline;
+  color: white;
+  padding: 2px 10px 2px 10px;
+}
+
+.cardTag:hover {
+  filter: opacity(0.8);
+  text-decoration: none;
+}
+
+.cardTag:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.cardTag:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+@media @phone {
+  .CardsListItem {
+    margin-bottom: 0;
+  }
+
+  .smallCard {
+    width: 100%;
+  }
+
+  .CardsListItem img.previewCardImg {
+    height: auto;
+  }
+}
+
+.CardsListItem:not(.smallCard) img.previewCardImg {
+  height: auto;
+}
+
+.CardsListItem img.previewCardImg {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.smallCard:hover {
+  opacity: .9;
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  -webkit-transition: -webkit-transform .20s ease-out;
+  transition: transform .20s ease-out, -webkit-transform .20s ease-out;
+}
+
+@media @tablet-up {
+  .smallCard {
+    width: 49%;
+  }
+
+  .CardsListItem img.previewCardImg {
+    height: 14rem;
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+  }
+
+  .CardsListItem {
+    position: relative;
+    border-radius: @border-radius;
+    transition: background 0.2s;
+    -webkit-box-shadow: 0 6px 18px rgba(14, 21, 47, 0.1), 0 -2px 6px rgba(14, 21, 47, 0.02);
+    box-shadow: 0 6px 18px rgba(14, 21, 47, 0.1), 0 -2px 6px rgba(14, 21, 47, 0.02);
+
+
+    &:hover {
+      background: mix(@control-bg, @body-bg, 50%);
+    }
+
+    &:hover .DiscussionListItem-controls,
+    .DiscussionListItem-controls.open {
+      opacity: 1;
+    }
+
+    .DiscussionListItem-controls.open {
+      z-index: 3;
+    }
+  }
+}
