@@ -13,11 +13,11 @@ export default class Settings extends ExtensionPage {
 
   oninit(vnode) {
     super.oninit(vnode);
-    this.allowedTags = JSON.parse(app.data.settings.dem13n_allowedTags);
-    this.defaultImg = Stream(app.data.settings.dem13n_defaultImg);
-    this.smallCards = Stream(app.data.settings.dem13n_smallCards);
-    this.cardBadges = Stream(app.data.settings.dem13n_cardBadges);
-    this.cardFooter = Stream(app.data.settings.dem13n_cardFooter);
+    this.allowedTags = JSON.parse(app.data.settings.dem13n_discussion_cards_allowedTags);
+    this.defaultImg = Stream(app.data.settings.dem13n_discussion_cards_defaultImg);
+    this.smallCards = Stream(app.data.settings.dem13n_discussion_cards_smallCards);
+    this.cardBadges = Stream(app.data.settings.dem13n_discussion_cards_cardBadges);
+    this.cardFooter = Stream(app.data.settings.dem13n_discussion_cards_cardFooter);
   }
 
   content() {
@@ -70,7 +70,7 @@ export default class Settings extends ExtensionPage {
                     return [
                       Switch.component({
                           id: tag.slug(),
-                          state: allowedTags.includes(tag.slug()),
+                          state: (allowedTags.length) ? allowedTags.includes(tag.slug()) : false,
                           onchange: function () {
                             (this.state) ? allowedTags.indexOf(this.id) !== -1 && allowedTags.splice(allowedTags.indexOf(this.id), 1) : allowedTags.push(this.id);
                           },
@@ -108,11 +108,11 @@ export default class Settings extends ExtensionPage {
     if (this.loading) return;
     this.loading = true;
     saveSettings({
-      dem13n_defaultImg: this.defaultImg(),
-      dem13n_allowedTags: JSON.stringify(this.allowedTags),
-      dem13n_smallCards: this.smallCards(),
-      dem13n_cardBadges: this.cardBadges(),
-      dem13n_cardFooter: this.cardFooter(),
+      dem13n_discussion_cards_defaultImg: this.defaultImg(),
+      dem13n_discussion_cards_allowedTags: JSON.stringify(this.allowedTags),
+      dem13n_discussion_cards_smallCards: this.smallCards(),
+      dem13n_discussion_cards_cardBadges: this.cardBadges(),
+      dem13n_discussion_cards_cardFooter: this.cardFooter(),
     }).then(() => window.location.reload());
   }
 

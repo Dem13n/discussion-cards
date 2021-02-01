@@ -62,7 +62,7 @@ app.initializers.add('dem13n-discussion-cards', () => {
       const text = app.translator.trans('core.forum.discussion_list.empty_text');
       return <div className="DiscussionList">{Placeholder.component({text})}</div>;
     }
-    if (app.current.matches(IndexPage) && allowedTags.includes(params.tags)) {
+    if (app.current.matches(IndexPage) && allowedTags.length && allowedTags.includes(params.tags)) {
       return (
         <div className={'DiscussionList' + (state.isSearchResults() ? ' DiscussionList--searchResults' : '')}>
           <div class="DiscussionList-discussions flexCard">

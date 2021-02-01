@@ -20,9 +20,9 @@ return [
     (new Extend\Locales(__DIR__ . '/locale')),
 
     (new Extend\Settings())
-        ->serializeToForum('defaultImg', 'dem13n_defaultImg')
-        ->serializeToForum('allowedTags', 'dem13n_allowedTags')
-        ->serializeToForum('cardBadges', 'dem13n_cardBadges')
-        ->serializeToForum('smallCards', 'dem13n_smallCards')
-        ->serializeToForum('cardFooter', 'dem13n_cardFooter')
+        ->serializeToForum('defaultImg', 'dem13n_discussion_cards_defaultImg')
+        ->serializeToForum('allowedTags', 'dem13n_discussion_cards_allowedTags')
+        ->serializeToForum('cardBadges', 'dem13n_discussion_cards_cardBadges')
+        ->serializeToForum('smallCards', 'dem13n_discussion_cards_smallCards')
+        ->serializeToForum('cardFooter', 'dem13n_discussion_cards_cardFooter')
 ];
