@@ -1,6 +1,6 @@
 .CardsListItem {
   width: 100%;
-  display: flex;
+  display: block;
   margin-bottom: 1.5rem;
   background: white;
   overflow: hidden;
@@ -142,13 +142,14 @@
     border-bottom: 1px solid lightgray;
   }
 
+  .flexCard .CardsListItem:last-child {
+    margin-bottom: 0;
+  }
+
   .smallCard {
     width: 100%;
   }
 
-  .CardsListItem img.previewCardImg {
-    height: auto;
-  }
 }
 
 .CardsListItem:not(.smallCard) img.previewCardImg {
@@ -156,8 +157,10 @@
 }
 
 .CardsListItem img.previewCardImg {
+  height: 14rem;
   margin-bottom: 1rem;
   width: 100%;
+  object-fit: cover;
 }
 
 .smallCard:hover {
