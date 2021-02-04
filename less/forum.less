@@ -18,11 +18,12 @@
 }
 
 .cardTitle {
-  padding: .5rem 1rem .5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
 .actor .username {
   font-size: 16px;
+  color: #000;
 }
 
 .flexCard {
@@ -34,7 +35,7 @@
 
 .cardSpacer {
   height: 50px;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .cardFooter {
@@ -54,7 +55,7 @@
 }
 
 .Avatar--mini:hover {
-  filter: opacity(.8);
+  filter: opacity(0.8);
 }
 
 .cardFooter .actor {
@@ -77,6 +78,7 @@
   place-items: center;
   margin-top: 11px;
   font-size: 16px;
+  color: gray;
 }
 
 .commentIcon {
@@ -131,8 +133,13 @@
 }
 
 @media @phone {
+  .flexCard {
+    background: @control-bg;
+  }
+
   .CardsListItem {
-    margin-bottom: 0;
+    margin-bottom: 10;
+    border-bottom: 1px solid lightgray;
   }
 
   .smallCard {
@@ -154,11 +161,11 @@
 }
 
 .smallCard:hover {
-  opacity: .9;
+  opacity: 0.9;
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
-  -webkit-transition: -webkit-transform .20s ease-out;
-  transition: transform .20s ease-out, -webkit-transform .20s ease-out;
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, -webkit-transform 0.2s ease-out;
 }
 
 @media @tablet-up {
@@ -176,9 +183,10 @@
     position: relative;
     border-radius: @border-radius;
     transition: background 0.2s;
-    -webkit-box-shadow: 0 6px 18px rgba(14, 21, 47, 0.1), 0 -2px 6px rgba(14, 21, 47, 0.02);
-    box-shadow: 0 6px 18px rgba(14, 21, 47, 0.1), 0 -2px 6px rgba(14, 21, 47, 0.02);
-
+    -webkit-box-shadow: 0 6px 18px rgba(14, 21, 47, 0.1),
+      0 -2px 6px rgba(14, 21, 47, 0.02);
+    box-shadow: 0 6px 18px rgba(14, 21, 47, 0.1),
+      0 -2px 6px rgba(14, 21, 47, 0.02);
 
     &:hover {
       background: mix(@control-bg, @body-bg, 50%);
@@ -191,6 +199,40 @@
 
     .DiscussionListItem-controls.open {
       z-index: 3;
+    }
+  }
+}
+
+body {
+  & when (@config-dark-mode =true) {
+
+    @muted-color: hsl(@secondary-hue, min(15%, @secondary-sat), 50%);
+
+    .CardsListItem {
+      background: hsl(@secondary-hue, min(20%, @secondary-sat), 14%);
+    }
+
+    .CardsListItem h2,
+    .cardFooter .replies,
+    .cardFooter .date,
+    .actor .username {
+      color: @muted-color;
+    }
+
+    @media @phone {
+      .flexCard {
+        background: hsl(@secondary-hue, min(30%, @secondary-sat), 25%);
+      }
+
+      .CardsListItem {
+        border-bottom: none;
+      }
+    }
+
+    @media @tablet-up {
+      .CardsListItem:hover {
+        background: hsl(@secondary-hue, min(20%, @secondary-sat), 17%);
+      }
     }
   }
 }
