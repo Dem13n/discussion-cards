@@ -25,4 +25,5 @@ return [
         ->serializeToForum('cardBadges', 'dem13n_discussion_cards_cardBadges')
         ->serializeToForum('smallCards', 'dem13n_discussion_cards_smallCards')
         ->serializeToForum('cardFooter', 'dem13n_discussion_cards_cardFooter')
+        ->serializeToForum('previewText', 'dem13n_discussion_cards_previewText')
 ];

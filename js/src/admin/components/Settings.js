@@ -18,6 +18,7 @@ export default class Settings extends ExtensionPage {
     this.smallCards = Stream(app.data.settings.dem13n_discussion_cards_smallCards);
     this.cardBadges = Stream(app.data.settings.dem13n_discussion_cards_cardBadges);
     this.cardFooter = Stream(app.data.settings.dem13n_discussion_cards_cardFooter);
+    this.previewText = Stream(app.data.settings.dem13n_discussion_cards_previewText);
   }
 
   content() {
@@ -33,6 +34,15 @@ export default class Settings extends ExtensionPage {
                 value: this.defaultImg() || false,
                 oninput: withAttr('value', this.defaultImg),
               }),
+            ]),
+            m('.Form-group', [
+              Switch.component(
+                {
+                  state: this.previewText() || false,
+                  onchange: this.previewText,
+                },
+                app.translator.trans('dem13n.admin.settings.preview_text')
+              ),
             ]),
             m('.Form-group', [
               Switch.component(
@@ -113,6 +123,7 @@ export default class Settings extends ExtensionPage {
       dem13n_discussion_cards_smallCards: this.smallCards(),
       dem13n_discussion_cards_cardBadges: this.cardBadges(),
       dem13n_discussion_cards_cardFooter: this.cardFooter(),
+      dem13n_discussion_cards_previewText: this.previewText(),
     }).then(() => window.location.reload());
   }
 

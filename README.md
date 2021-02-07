@@ -23,4 +23,3 @@ php flarum cache:clear
 
 - [Packagist](https://packagist.org/packages/dem13n/discussion-cards)
 "# Discussion Cards" 
-

@@ -1,5 +1,5 @@
 import app from 'flarum/app';
-import {extend, override} from 'flarum/extend';
+import { extend, override } from 'flarum/extend';
 import DiscussionList from 'flarum/components/DiscussionList';
 import DiscussionListState from 'flarum/states/DiscussionListState';
 import DiscussionListItem from 'flarum/components/DiscussionListItem';
@@ -16,7 +16,20 @@ import icon from 'flarum/helpers/icon';
 import humanTime from 'flarum/utils/humanTime';
 import craftTags from './utils/craftTags';
 import craftBadges from './utils/craftBadges';
+import { truncate } from 'flarum/utils/string';
 
+
+function previewText(text, lenght = 150) {
+  let preview;
+  if (app.forum.attribute('previewText') === '1' && text.length) {
+    preview = <div className="previewPost">
+      {truncate(text, lenght)}
+    </div>;
+  } else {
+    preview = '';
+  }
+  return preview;
+}
 
 function option(i) {
   const smallCards = app.forum.attribute('smallCards');
@@ -60,7 +73,7 @@ app.initializers.add('dem13n-discussion-cards', () => {
     }
     if (state.empty()) {
       const text = app.translator.trans('core.forum.discussion_list.empty_text');
-      return <div className="DiscussionList">{Placeholder.component({text})}</div>;
+      return <div className="DiscussionList">{Placeholder.component({ text })}</div>;
     }
     if (app.current.matches(IndexPage) && allowedTags.length && allowedTags.includes(params.tags)) {
       return (
@@ -82,16 +95,17 @@ app.initializers.add('dem13n-discussion-cards', () => {
                   <Link href={app.route.discussion(discussion, 0)}>
                     {(app.forum.attribute('cardBadges') === '1') ? craftBadges(discussion.badges().toArray()) : ''}
                     <img className="previewCardImg" alt={discussion.title()}
-                         src={getFirstImage(discussion.firstPost())}></img>
+                      src={getFirstImage(discussion.firstPost())}></img>
                     <div className="cardTags">{craftTags(discussion.tags())}</div>
                     <div className="cardTitle">
                       <h2>{discussion.title()}</h2>
                     </div>
+                    {previewText(discussion.firstPost().contentPlain())}
                     {(app.forum.attribute('cardFooter') === '1') ?
                       <div className="cardSpacer">
                         <div className="cardFooter">
                           <Link href={discussion.user() ? app.route.user(discussion.user()) : '#'}>
-                            {avatar(discussion.user(), {className: 'Avatar--mini'})}
+                            {avatar(discussion.user(), { className: 'Avatar--mini' })}
                           </Link>
                           <div className="actor">
                             {username(discussion.user())}
@@ -100,7 +114,7 @@ app.initializers.add('dem13n-discussion-cards', () => {
                             </div>
                           </div>
                           <Link href={app.route.discussion(discussion, discussion.lastPostNumber())} class="replies"
-                                title={(discussion.replyCount() > 0) ? app.translator.trans('dem13n.forum.last_reply') + humanTime(discussion.lastPostedAt()) : ''}>
+                            title={(discussion.replyCount() > 0) ? app.translator.trans('dem13n.forum.last_reply') + humanTime(discussion.lastPostedAt()) : ''}>
                             <div className="commentIcon">{icon('far fa-comment-alt')}</div>
                             {discussion.replyCount()}
                           </Link>
@@ -121,7 +135,7 @@ app.initializers.add('dem13n-discussion-cards', () => {
             {state.discussions.map((discussion) => {
               return (
                 <li key={discussion.id()} data-id={discussion.id()}>
-                  {DiscussionListItem.component({discussion, params})}
+                  {DiscussionListItem.component({ discussion, params })}
                 </li>
               );
             })}
