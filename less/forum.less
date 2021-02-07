@@ -227,7 +227,7 @@
 body {
   & when (@config-dark-mode =true) {
 
-    @muted-color: hsl(@secondary-hue, min(15%, @secondary-sat), 50%);
+    @muted-color: hsl(@secondary-hue, min(15%, @secondary-sat), 60%);
 
     .CardsListItem {
       background: hsl(@secondary-hue, min(20%, @secondary-sat), 14%);
@@ -238,6 +238,10 @@ body {
     .cardFooter .date,
     .actor .username {
       color: @muted-color;
+    }
+    
+    .previewPost {
+      color: hsl(@secondary-hue, min(15%, @secondary-sat), 70%);
     }
 
     @media @phone {
