@@ -1,12 +1,13 @@
 import ExtensionPage from 'flarum/components/ExtensionPage';
 import app from 'flarum/app';
-import sortTags from 'flarum/tags/utils/sortTags';
 import Stream from 'flarum/common/utils/Stream';
 import Button from 'flarum/components/Button';
 import saveSettings from 'flarum/utils/saveSettings';
 import Switch from 'flarum/components/Switch';
 import icon from 'flarum/helpers/icon';
 import withAttr from 'flarum/utils/withAttr';
+
+const sortTags = (tags) => flarum.core.compat['tags/utils/sortTags'](tags);
 
 
 export default class Settings extends ExtensionPage {

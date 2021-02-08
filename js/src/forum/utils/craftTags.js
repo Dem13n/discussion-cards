@@ -1,5 +1,5 @@
-import sortTags from 'flarum/tags/utils/sortTags';
 import Link from 'flarum/components/Link';
+const sortTags = (tags) => flarum.core.compat['tags/utils/sortTags'](tags);
 
 
 export default function craftTags(tags) {
