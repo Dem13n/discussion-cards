@@ -92,7 +92,7 @@ app.initializers.add('dem13n-discussion-cards', () => {
                       DiscussionControls.controls(discussion, this).toArray()
                     )
                     : ''}
-                  <Link href={app.route.discussion(discussion, 0)}>
+                  <Link href={app.route.discussion(discussion, 0)} className="cardLink">
                     {(app.forum.attribute('cardBadges') === '1') ? craftBadges(discussion.badges().toArray()) : ''}
                     <img className="previewCardImg" alt={discussion.title()}
                       src={getFirstImage(discussion.firstPost())}></img>

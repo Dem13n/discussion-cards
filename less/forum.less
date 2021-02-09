@@ -11,6 +11,11 @@
   text-decoration: none;
 }
 
+.cardLink{
+  display: block;
+  height: 100%;
+}
+
 .CardsListItem h2 {
   font-size: 1.25rem;
   color: #000;
@@ -157,7 +162,7 @@
 
   .CardsListItem {
     margin-bottom: 10;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid fade(@primary-color, 15%);
   }
 
   .flexCard .CardsListItem:last-child {
@@ -210,7 +215,7 @@
       0 -2px 6px rgba(14, 21, 47, 0.02);
 
     &:hover {
-      background: mix(@control-bg, @body-bg, 50%);
+      background: snow;
     }
 
     &:hover .DiscussionListItem-controls,
@@ -229,6 +234,10 @@ body {
 
     @muted-color: hsl(@secondary-hue, min(15%, @secondary-sat), 60%);
 
+    .previewPost {
+      color: hsl(@secondary-hue, min(15%, @secondary-sat), 70%);
+    }
+
     .CardsListItem {
       background: hsl(@secondary-hue, min(20%, @secondary-sat), 14%);
     }
@@ -238,10 +247,6 @@ body {
     .cardFooter .date,
     .actor .username {
       color: @muted-color;
-    }
-    
-    .previewPost {
-      color: hsl(@secondary-hue, min(15%, @secondary-sat), 70%);
     }
 
     @media @phone {

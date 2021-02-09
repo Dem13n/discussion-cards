@@ -24,7 +24,7 @@
             "title": "Discussion Сards",
             "category": "discussion",
             "icon": {
-                "name": "fas fa-border-all",
+                "name": "fas fa-th-list",
                 "backgroundColor": "#2B6205",
                 "color": "#fff"
             }
