@@ -3,9 +3,9 @@
   display: block;
   margin-bottom: 1.5rem;
   background: white;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-}
+
 
 .CardsListItem a:hover {
   text-decoration: none;
@@ -216,6 +216,7 @@
 
     &:hover {
       background: snow;
+      z-index: 9999;
     }
 
     &:hover .DiscussionListItem-controls,
