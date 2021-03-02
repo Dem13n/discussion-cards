@@ -2,7 +2,6 @@ import app from 'flarum/app';
 import { extend, override } from 'flarum/extend';
 import DiscussionList from 'flarum/components/DiscussionList';
 import DiscussionListState from 'flarum/states/DiscussionListState';
-import DiscussionListItem from 'flarum/components/DiscussionListItem';
 import DiscussionControls from 'flarum/utils/DiscussionControls';
 import Dropdown from 'flarum/components/Dropdown';
 import IndexPage from 'flarum/components/IndexPage';
@@ -55,7 +54,7 @@ app.initializers.add('dem13n-discussion-cards', () => {
     }
   });
 
-  override(DiscussionList.prototype, 'view', function () {
+  override(DiscussionList.prototype, 'view', function (original) {
     const allowedTags = JSON.parse(app.forum.attribute('allowedTags'));
     const state = this.attrs.state;
     const params = state.getParams();
@@ -129,20 +128,7 @@ app.initializers.add('dem13n-discussion-cards', () => {
         </div>
       );
     } else {
-      return (
-        <div className={'DiscussionList' + (state.isSearchResults() ? ' DiscussionList--searchResults' : '')}>
-          <ul className="DiscussionList-discussions">
-            {state.discussions.map((discussion) => {
-              return (
-                <li key={discussion.id()} data-id={discussion.id()}>
-                  {DiscussionListItem.component({ discussion, params })}
-                </li>
-              );
-            })}
-          </ul>
-          <div className="DiscussionList-loadMore">{loading}</div>
-        </div>
-      );
+      return original();
     }
   })
-});
+}, -1);
