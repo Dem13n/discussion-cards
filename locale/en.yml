@@ -1,11 +1,14 @@
 dem13n:
   forum:
-    last_reply: "Last reply: "
+    replies: "Replies: {count}"
   admin:
     settings:
+      settings_error: Clear cache, disable that extension, click Uninstall button (on the right), confirm deleting data, then enable extension
       default_img: Default image
       choose_tags: Choose tags
       badges: Show badges
       actor_info: Show author
-      small_cards: Number of small cards
+      small_cards: Number of primary cards
       preview_text: Show short text
+      show_replies: Show replies
+      output_on_index_page: Output on index page

@@ -4,6 +4,8 @@ namespace Dem13n\Discussion\Cards;
 
 use Flarum\Extend;
 use Flarum\Api\Controller\ListDiscussionsController;
+use Dem13n\Discussion\Cards\Api\Controllers\UploadImageController;
+use Dem13n\Discussion\Cards\Api\Controllers\DeleteImageController;
 
 return [
     (new Extend\Frontend('forum'))
@@ -14,16 +16,16 @@ return [
         ->js(__DIR__ . '/js/dist/admin.js')
         ->css(__DIR__ . '/less/admin.less'),
 
-    (new Extend\ApiController(ListDiscussionsController::class))
-        ->addInclude('firstPost'),
-
     (new Extend\Locales(__DIR__ . '/locale')),
 
+    (new Extend\ApiController(ListDiscussionsController::class))
+        ->addInclude(['firstPost', 'posts', 'posts.user']),
+
     (new Extend\Settings())
-        ->serializeToForum('defaultImg', 'dem13n_discussion_cards_defaultImg')
-        ->serializeToForum('allowedTags', 'dem13n_discussion_cards_allowedTags')
-        ->serializeToForum('cardBadges', 'dem13n_discussion_cards_cardBadges')
-        ->serializeToForum('smallCards', 'dem13n_discussion_cards_smallCards')
-        ->serializeToForum('cardFooter', 'dem13n_discussion_cards_cardFooter')
-        ->serializeToForum('previewText', 'dem13n_discussion_cards_previewText')
+        ->serializeToForum('dem13nDiscussionCards', 'dem13n_discussion_cards')
+        ->serializeToForum('dem13nDiscussionCardsDefaultImage', 'dem13n_discussion_cards_default_image_path'),
+
+    (new Extend\Routes('api'))
+        ->post('/dem13n_discussion_cards_default_image', 'dem13n_discussion_cards_default_image', UploadImageController::class)
+        ->delete('/dem13n_discussion_cards_default_image', 'dem13n_discussion_cards_default_image.delete', DeleteImageController::class)
 ];
