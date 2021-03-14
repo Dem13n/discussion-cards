@@ -29,8 +29,6 @@ export default class Settings extends ExtensionPage {
 
     const settings = this.settings;
 
-    let myValue = 0
-
     app.forum.data.attributes.dem13n_discussion_cards_default_imageUrl =
       app.forum.attribute("baseUrl") + "/assets/" +
       app.data.settings.dem13n_discussion_cards_default_image_path;
