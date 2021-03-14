@@ -21,12 +21,12 @@ class RegisterLessVariables implements ExtenderInterface
                     $encoded_settings = json_decode($settings->get('dem13n_discussion_cards'), true);
 
                     $vars = [
-                        'desktop-card-width' => $encoded_settings['desktopCardWidth'] ??= '49' . '%',
-                        'tablet-card-width' => $encoded_settings['tabletCardWidth'] ??= '49' . '%',
+                        'desktop-card-width' => $encoded_settings['desktopCardWidth'] ??= '49',
+                        'tablet-card-width' => $encoded_settings['tabletCardWidth'] ??= '49',
                     ];
 
                     return array_reduce(array_keys($vars), function ($string, $name) use ($vars) {
-                        return $string . "@$name: {$vars[$name]};";
+                        return $string . "@$name: {$vars[$name]}%;";
                     }, '');
 
                 });
