@@ -90,7 +90,7 @@ export default class Settings extends ExtensionPage {
               ),
             ]),
             m('.Form-group', [
-              m('label', app.translator.trans('dem13n.admin.settings.desktop_card_width', {percent: settings.desktopCardWidth})),
+              m('label', app.translator.trans('dem13n.admin.settings.desktop_card_width', {percent: settings.desktopCardWidth || 49})),
               m('input', {
                 type: 'range',
                 min: 1,
@@ -104,7 +104,7 @@ export default class Settings extends ExtensionPage {
               }),
             ]),
             m('.Form-group', [
-              m('label', app.translator.trans('dem13n.admin.settings.tablet_card_width', {percent: settings.tabletCardWidth})),
+              m('label', app.translator.trans('dem13n.admin.settings.tablet_card_width', {percent: settings.tabletCardWidth || 49})),
               m('input', {
                 type: 'range',
                 min: 1,
