@@ -1,12 +1,9 @@
 import ExtensionPage from 'flarum/components/ExtensionPage';
 import app from 'flarum/app';
-import Stream from 'flarum/common/utils/Stream';
 import Button from 'flarum/components/Button';
 import saveSettings from 'flarum/utils/saveSettings';
 import Switch from 'flarum/components/Switch';
 import icon from 'flarum/helpers/icon';
-import withAttr from 'flarum/utils/withAttr';
-import sortTags from 'flarum/tags/utils/sortTags';
 import UploadImageButton from 'flarum/components/UploadImageButton';
 import SwitchTagList from './switchTagList';
 
@@ -23,13 +20,16 @@ export default class Settings extends ExtensionPage {
     if (!this.settings) {
       return m('.ExtensionPage-settings', [
         m('.container', {
-          style: {color: 'red', fontWeight: 'bold'}},
+            style: {color: 'red', fontWeight: 'bold'}
+          },
           icon('fas fa-exclamation-triangle', {style: {fontSize: '24px', marginRight: '10px'}}),
           app.translator.trans('dem13n.admin.settings.settings_error'))
       ]);
     }
 
     const settings = this.settings;
+
+    let myValue = 0
 
     app.forum.data.attributes.dem13n_discussion_cards_default_imageUrl =
       app.forum.attribute("baseUrl") + "/assets/" +
@@ -90,6 +90,34 @@ export default class Settings extends ExtensionPage {
                   },
                 }, app.translator.trans('dem13n.admin.settings.output_on_index_page')
               ),
+            ]),
+            m('.Form-group', [
+              m('label', app.translator.trans('dem13n.admin.settings.desktop_card_width', {percent: settings.desktopCardWidth})),
+              m('input', {
+                type: 'range',
+                min: 1,
+                max: 100,
+                step: 0.1,
+                value: settings.desktopCardWidth || 49,
+                oninput: e => {
+                  settings.desktopCardWidth = e.target.value;
+                },
+                style: {width: '100%'}
+              }),
+            ]),
+            m('.Form-group', [
+              m('label', app.translator.trans('dem13n.admin.settings.tablet_card_width', {percent: settings.tabletCardWidth})),
+              m('input', {
+                type: 'range',
+                min: 1,
+                max: 100,
+                step: 0.1,
+                value: settings.tabletCardWidth || 49,
+                oninput: e => {
+                  settings.tabletCardWidth = e.target.value;
+                },
+                style: {width: '100%'}
+              }),
             ]),
             m('.Form-group', [
               m('label', app.translator.trans('dem13n.admin.settings.small_cards')),

@@ -1,4 +1,4 @@
-export default function getPostImage(post, key = 0) {
+export default function getPostImage(post, key = 1) {
 
   const regex = /<img(?!.*?class="emoji").*?src=[\'"](.*?)[\'"].*?>/;
   const image = app.forum.attribute('dem13nDiscussionCardsDefaultImage');
@@ -6,8 +6,8 @@ export default function getPostImage(post, key = 0) {
 
   if (post) {
     const src = regex.exec(post.contentHtml());
-    if (typeof key === "number") {
-      return (src) ? src[key + 1] : (image ? defaultImg : null);
+    if (typeof key === "number" && key > 0) {
+      return (src) ? src[key] : (image ? defaultImg : null);
     } else if (key === '~') {
       return src;
     }

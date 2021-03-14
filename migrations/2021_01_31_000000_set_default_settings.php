@@ -9,6 +9,8 @@ $settings = [
     'Replies' => 0,
     'onIndexPage' => 0,
     'smallCards' => 10,
+    'desktopCardWidth' => '49',
+    'tabletCardWidth' => '49',
     'allowedTags' => []
 ];
 

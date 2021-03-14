@@ -12,3 +12,5 @@ dem13n:
       preview_text: Показывать краткий текст
       show_replies: Показать последних ответивших
       output_on_index_page: Выводить на главной странице
+      desktop_card_width: "Ширина основных карточек в десктопной версии: {percent}%"
+      tablet_card_width: "Ширина основных карточек на планшетах: {percent}%"

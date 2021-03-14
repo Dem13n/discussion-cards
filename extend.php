@@ -21,6 +21,8 @@ return [
     (new Extend\ApiController(ListDiscussionsController::class))
         ->addInclude(['firstPost', 'posts', 'posts.user']),
 
+    new Extenders\RegisterLessVariables(),
+
     (new Extend\Settings())
         ->serializeToForum('dem13nDiscussionCards', 'dem13n_discussion_cards')
         ->serializeToForum('dem13nDiscussionCardsDefaultImage', 'dem13n_discussion_cards_default_image_path'),
