@@ -18,11 +18,11 @@ class RegisterLessVariables implements ExtenderInterface
             $assets->css(function (SourceCollector $sources) {
                 $sources->addString(function () {
                     $settings = app(SettingsRepositoryInterface::class);
-                    $encoded_settings = json_decode($settings->get('dem13n_discussion_cards'), true);
+                    $decoded_settings = json_decode($settings->get('dem13n_discussion_cards'), true);
 
                     $vars = [
-                        'desktop-card-width' => $encoded_settings['desktopCardWidth'] ??= '49',
-                        'tablet-card-width' => $encoded_settings['tabletCardWidth'] ??= '49',
+                        'desktop-card-width' => $decoded_settings['desktopCardWidth'] ??= '49',
+                        'tablet-card-width' => $decoded_settings['tabletCardWidth'] ??= '49',
                     ];
 
                     return array_reduce(array_keys($vars), function ($string, $name) use ($vars) {
