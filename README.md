@@ -4,7 +4,7 @@
 
 A [Flarum](http://flarum.org) extension. Allows you to display discussions in the form of cards, the first image of the first post is used as a preview, if there are no images, a stub is displayed
 
-![Discussion Cards](https://i.imgur.com/1AoZ3JF.png)
+![Discussion Cards](https://i.imgur.com/i7FZGHq.png)
 
 ### Installation
 
