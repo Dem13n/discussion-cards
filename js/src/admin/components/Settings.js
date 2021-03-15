@@ -6,6 +6,8 @@ import Switch from 'flarum/components/Switch';
 import icon from 'flarum/helpers/icon';
 import UploadImageButton from 'flarum/components/UploadImageButton';
 import SwitchTagList from './switchTagList';
+import LoadingModal from 'flarum/components/LoadingModal';
+
 
 
 export default class Settings extends ExtensionPage {
@@ -152,7 +154,13 @@ export default class Settings extends ExtensionPage {
     this.loading = true;
     saveSettings({
       dem13n_discussion_cards: JSON.stringify(this.settings),
-    }).then(() => window.location.reload());
+    });
+    app.modal.show(LoadingModal);
+    app.request({
+        method: 'DELETE',
+        url: app.forum.attribute('apiUrl') + '/cache',
+      })
+      .then(() => window.location.reload());
   }
 
 }
