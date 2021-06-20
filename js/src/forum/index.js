@@ -1,11 +1,11 @@
 import app from 'flarum/app';
 import {extend, override} from 'flarum/extend';
-import DiscussionList from 'flarum/components/DiscussionList';
-import DiscussionListState from 'flarum/states/DiscussionListState';
-import IndexPage from 'flarum/components/IndexPage';
-import LoadingIndicator from 'flarum/components/LoadingIndicator';
-import Placeholder from 'flarum/components/Placeholder';
-import Button from 'flarum/components/Button';
+import DiscussionList from 'flarum/forum/components/DiscussionList';
+import DiscussionListState from 'flarum/forum/states/DiscussionListState';
+import IndexPage from 'flarum/forum/components/IndexPage';
+import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
+import Placeholder from 'flarum/common/components/Placeholder';
+import Button from 'flarum/common/components/Button';
 import CardItem from './components/CardItem';
 import ListItem from './components/ListItem';
 
@@ -32,7 +32,7 @@ app.initializers.add('dem13n/discussion/cards', () => {
         }, app.translator.trans('core.forum.discussion_list.load_more_button')
       );
     }
-    if (state.empty()) {
+    if (state.isEmpty()) {
       const text = app.translator.trans('core.forum.discussion_list.empty_text');
       return <div className="DiscussionList">{m(Placeholder, {text})}</div>;
     }
@@ -40,12 +40,12 @@ app.initializers.add('dem13n/discussion/cards', () => {
       return (
         <div className={'DiscussionList' + (state.isSearchResults() ? ' DiscussionList--searchResults' : '')}>
           <div class="DiscussionList-discussions flexCard">
-            {state.discussions.map((discussion, i) => {
-              if (i < settings.smallCards) {
-                return m(CardItem, {discussion: discussion});
-              } else {
-                return m(ListItem, {discussion: discussion});
-              }
+            {state.getPages().map((pg) => {
+                return pg.items.map((discussion, i) => {
+                return (i < settings.smallCards) 
+                ? m(CardItem, {discussion: discussion}) 
+                : m(ListItem, {discussion: discussion})
+                });
             })}
           </div>
           <div className="DiscussionList-loadMore">{loading}</div>

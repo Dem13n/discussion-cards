@@ -1,4 +1,4 @@
-import icon from 'flarum/helpers/icon';
+import icon from 'flarum/common/helpers/icon';
 
 export default function craftBadges(badges) {
   if (badges.length) {

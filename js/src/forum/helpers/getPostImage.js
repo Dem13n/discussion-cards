@@ -10,6 +10,8 @@ export default function getPostImage(post, key = 1) {
       return (src) ? src[key] : (image ? defaultImg : null);
     } else if (key === '~') {
       return src;
+    } else {
+      return null;
     }
   }
 

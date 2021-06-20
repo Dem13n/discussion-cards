@@ -1,15 +1,15 @@
-import Component from "flarum/Component";
+import Component from "flarum/common/Component";
 import craftBadges from "../utils/craftBadges";
 import getPostImage from "../helpers/getPostImage";
 import craftTags from "../utils/craftTags";
-import humanTime from 'flarum/utils/humanTime';
-import icon from 'flarum/helpers/icon';
-import username from 'flarum/helpers/username';
-import avatar from 'flarum/helpers/avatar';
-import Dropdown from 'flarum/components/Dropdown';
-import DiscussionControls from 'flarum/utils/DiscussionControls';
-import Link from 'flarum/components/Link';
-import {truncate} from 'flarum/utils/string';
+import humanTime from 'flarum/common/utils/humanTime';
+import icon from 'flarum/common/helpers/icon';
+import username from 'flarum/common/helpers/username';
+import avatar from 'flarum/common/helpers/avatar';
+import Dropdown from 'flarum/common/components/Dropdown';
+import DiscussionControls from 'flarum/forum/utils/DiscussionControls';
+import Link from 'flarum/common/components/Link';
+import {truncate} from 'flarum/common/utils/string';
 import LastReplies from './LastReplies';
 
 

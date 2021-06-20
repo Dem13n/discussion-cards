@@ -1,13 +1,13 @@
-import Component from "flarum/Component";
+import Component from "flarum/common/Component";
 
-import ExtensionPage from 'flarum/components/ExtensionPage';
+import ExtensionPage from 'flarum/admin/components/ExtensionPage';
 import app from 'flarum/app';
 import Stream from 'flarum/common/utils/Stream';
-import Button from 'flarum/components/Button';
-import saveSettings from 'flarum/utils/saveSettings';
-import Switch from 'flarum/components/Switch';
-import icon from 'flarum/helpers/icon';
-import withAttr from 'flarum/utils/withAttr';
+import Button from 'flarum/common/components/Button';
+import saveSettings from 'flarum/admin/utils/saveSettings';
+import Switch from 'flarum/common/components/Switch';
+import icon from 'flarum/common/helpers/icon';
+import withAttr from 'flarum/common/utils/withAttr';
 import sortTags from 'flarum/tags/utils/sortTags';
 
 export default class SwitchTagList extends Component {

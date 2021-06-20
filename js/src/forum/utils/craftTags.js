@@ -1,4 +1,4 @@
-import Link from 'flarum/components/Link';
+import Link from 'flarum/common/components/Link';
 import sortTags from 'flarum/tags/utils/sortTags';
 
 export default function craftTags(tags) {

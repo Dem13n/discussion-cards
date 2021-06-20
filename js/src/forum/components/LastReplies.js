@@ -1,7 +1,7 @@
-import Component from 'flarum/Component';
-import avatar from 'flarum/helpers/avatar';
-import icon from 'flarum/helpers/icon';
-import Link from 'flarum/components/Link';
+import Component from 'flarum/common/Component';
+import avatar from 'flarum/common/helpers/avatar';
+import icon from 'flarum/common/helpers/icon';
+import Link from 'flarum/common/components/Link';
 
 
 export default class LastReplies extends Component {
