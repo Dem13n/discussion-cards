@@ -23,13 +23,15 @@ app.initializers.add('dem13n/discussion/cards', () => {
     const state = this.attrs.state;
     const params = state.getParams();
     let loading;
-    if (state.isLoading()) {
-      loading = m(LoadingIndicator);
-    } else if (state.moreResults) {
-      loading = m(Button, {
+    if (state.isInitialLoading() || state.isLoadingNext()) {
+      loading = <LoadingIndicator/>;
+    } else if (state.hasNext()) {
+      loading = Button.component(
+        {
           className: 'Button',
-          onclick: state.loadMore.bind(state),
-        }, app.translator.trans('core.forum.discussion_list.load_more_button')
+          onclick: state.loadNext.bind(state),
+        },
+        app.translator.trans('core.forum.discussion_list.load_more_button')
       );
     }
     if (state.isEmpty()) {
@@ -40,12 +42,12 @@ app.initializers.add('dem13n/discussion/cards', () => {
       return (
         <div className={'DiscussionList' + (state.isSearchResults() ? ' DiscussionList--searchResults' : '')}>
           <div class="DiscussionList-discussions flexCard">
-            {state.getPages().map((pg) => {
-                return pg.items.map((discussion, i) => {
-                return (i < settings.smallCards) 
-                ? m(CardItem, {discussion: discussion}) 
-                : m(ListItem, {discussion: discussion})
-                });
+            {state.getPages().map((pg, o) => {
+              return pg.items.map((discussion, i) => {
+                return (i < settings.smallCards && o === 0)
+                  ? m(CardItem, {discussion: discussion})
+                  : m(ListItem, {discussion: discussion})
+              });
             })}
           </div>
           <div className="DiscussionList-loadMore">{loading}</div>
@@ -61,6 +63,6 @@ app.initializers.add('dem13n/discussion/cards', () => {
 
 // Expose compat API
 import extCompat from './compat';
-import { compat } from '@flarum/core/forum';
+import {compat} from '@flarum/core/forum';
 
 Object.assign(compat, extCompat);
