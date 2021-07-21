@@ -5,7 +5,6 @@ import craftTags from "../utils/craftTags";
 import humanTime from 'flarum/common/utils/humanTime';
 import icon from 'flarum/common/helpers/icon';
 import username from 'flarum/common/helpers/username';
-import avatar from 'flarum/common/helpers/avatar';
 import Dropdown from 'flarum/common/components/Dropdown';
 import DiscussionControls from 'flarum/forum/utils/DiscussionControls';
 import Link from 'flarum/common/components/Link';
@@ -23,6 +22,7 @@ export default class cardItem extends Component {
   view() {
     const discussion = this.discussion;
     const settings = JSON.parse(app.forum.attribute('dem13nDiscussionCards'));
+    const isRead = settings.markCards === 1 && (!discussion.isRead() && app.session.user) ? 'Unread' : '';
     const attrs = {};
     attrs.className = "wrapImg" + (settings.cardFooter === 1 ? " After" : '');
     const image = getPostImage(discussion.firstPost());
@@ -36,7 +36,7 @@ export default class cardItem extends Component {
     return (
       <div key={discussion.id()}
            data-id={discussion.id()}
-           className={"CardsListItem Card" + (discussion.isHidden() ? " Hidden" : "")}>
+           className={"CardsListItem Card " + isRead + (discussion.isHidden() ? " Hidden" : "")}>
         {DiscussionControls.controls(discussion, this).toArray().length
           ? m(Dropdown, {
             icon: 'fas fa-ellipsis-v',
@@ -51,6 +51,12 @@ export default class cardItem extends Component {
             : ''}
 
           <div {...attrs}>
+            {settings.Views === 1 && flarum.extensions['flarumite-simple-discussion-views']
+              ? <div className="discussionViews">
+                {icon('fas fa-eye', {className: 'icon'})}
+                {discussion.views()}
+              </div>
+              : ''}
             {media}
 
             {settings.cardFooter === 1

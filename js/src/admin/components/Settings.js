@@ -30,7 +30,6 @@ export default class Settings extends ExtensionPage {
     }
 
     const settings = this.settings;
-
     app.forum.data.attributes.dem13n_discussion_cards_default_imageUrl =
       app.forum.attribute("baseUrl") + "/assets/" +
       app.data.settings.dem13n_discussion_cards_default_image_path;
@@ -89,6 +88,24 @@ export default class Settings extends ExtensionPage {
                     settings.onIndexPage ^= true
                   },
                 }, app.translator.trans('dem13n.admin.settings.output_on_index_page')
+              ),
+            ]),
+            m('.Form-group', [
+              m(Switch, {
+                  state: settings.Views,
+                  onchange: () => {
+                    settings.Views ^= true
+                  },
+                }, app.translator.trans('dem13n.admin.settings.show_views')
+              ),
+            ]),
+            m('.Form-group', [
+              m(Switch, {
+                  state: settings.markCards,
+                  onchange: () => {
+                    settings.markCards ^= true
+                  },
+                }, app.translator.trans('dem13n.admin.settings.mark_cards')
               ),
             ]),
             m('.Form-group', [
@@ -155,6 +172,7 @@ export default class Settings extends ExtensionPage {
     saveSettings({
       dem13n_discussion_cards: JSON.stringify(this.settings),
     });
+
     app.modal.show(LoadingModal);
     app.request({
         method: 'DELETE',

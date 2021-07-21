@@ -8,6 +8,7 @@ import Placeholder from 'flarum/common/components/Placeholder';
 import Button from 'flarum/common/components/Button';
 import CardItem from './components/CardItem';
 import ListItem from './components/ListItem';
+import isExtensionEnabled from 'flarum/admin/utils/isExtensionEnabled';
 
 
 app.initializers.add('dem13n/discussion/cards', () => {

@@ -11,6 +11,8 @@ dem13n:
       small_cards: Количество основных карточек
       preview_text: Показывать краткий текст
       show_replies: Показать последних ответивших
+      show_views: Показывать количество просмотров (при установленном и включенном расширении "Flarumite Simple Discussion Views")
       output_on_index_page: Выводить на главной странице
       desktop_card_width: "Ширина основных карточек в десктопной версии: {percent}%"
       tablet_card_width: "Ширина основных карточек на планшетах: {percent}%"
+      mark_cards: Помечать  карточки с непрочитанными дискуссиями

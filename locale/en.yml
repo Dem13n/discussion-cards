@@ -11,6 +11,8 @@ dem13n:
       small_cards: Number of primary cards
       preview_text: Show short text
       show_replies: Show replies
+      show_views: Show views (when the extension "Flarumite Simple Discussion Views" installed and enabled)
       output_on_index_page: Output on index page
       desktop_card_width: "Width of primary cards on desktop screens: {percent}%"
       tablet_card_width: "Width of primary cards on tablets: {percent}%"
+      mark_cards: Mark cards with unread discussions
