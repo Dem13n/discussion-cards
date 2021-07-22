@@ -74,7 +74,7 @@ export default class cardItem extends Component {
 
           <div className="cardTags">{craftTags(discussion.tags())}</div>
           <div className="cardTitle"><h2>{discussion.title()}</h2></div>
-          {settings.previewText === 1
+          {settings.previewText === 1 && discussion.firstPost()
             ? <div className="previewPost">{truncate(discussion.firstPost().contentPlain(), 150)}</div>
             : ''}
 

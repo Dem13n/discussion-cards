@@ -85,7 +85,7 @@ export default class listItem extends Component {
                 <div className="cardTags">{craftTags(discussion.tags())}</div>
               </div>
 
-              {settings.previewText === 1
+              {settings.previewText === 1 && discussion.firstPost()
                 ? <div className="previewPost">{truncate(discussion.firstPost().contentPlain(), 150)}</div>
                 : ''}
 
