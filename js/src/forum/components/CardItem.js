@@ -52,8 +52,8 @@ export default class cardItem extends Component {
 
           <div {...attrs}>
             {settings.Views === 1 && !isNaN(discussion.views())
-              ? <div className="discussionViews">
-                {icon('fas fa-eye', {className: 'icon'})}
+              ? <div className="imageLabel discussionViews">
+                {icon('fas fa-eye', {className: 'labelIcon'})}
                 {discussion.views()}
               </div>
               : ''}
