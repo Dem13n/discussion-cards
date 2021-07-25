@@ -54,9 +54,9 @@ export default class listItem extends Component {
 
             <div className="rowSpan-3 colSpan">
               <div {...attrs}>
-                {settings.Views === 1 && flarum.extensions['flarumite-simple-discussion-views']
-                  ? <div className="discussionViews">
-                    {icon('fas fa-eye', {className: 'icon'})}
+                {settings.Views === 1 && !isNaN(discussion.views())
+                  ? <div className="imageLabel discussionViews">
+                    {icon('fas fa-eye', {className: 'labelIcon'})}
                     {discussion.views()}
                   </div>
                   : ''}
@@ -107,7 +107,11 @@ export default class listItem extends Component {
                     </div>
                   </Link>
                 </div>
-                : ''}
+                : <div className="imageLabel discussionReplyCount">
+                  {icon('fas fa-comment', {className: 'labelIcon'})}
+                  {discussion.replyCount()}
+                </div>
+              }
             </div>
           </div>
         </Link>

@@ -51,7 +51,7 @@ export default class cardItem extends Component {
             : ''}
 
           <div {...attrs}>
-            {settings.Views === 1 && flarum.extensions['flarumite-simple-discussion-views']
+            {settings.Views === 1 && !isNaN(discussion.views())
               ? <div className="discussionViews">
                 {icon('fas fa-eye', {className: 'icon'})}
                 {discussion.views()}

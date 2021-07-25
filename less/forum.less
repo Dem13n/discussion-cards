@@ -5,27 +5,37 @@
   overflow: visible;
   position: relative;
 
-  &.Unread{
+  &.Unread {
     filter: grayscale(100%);
   }
 
-  .discussionViews {
-    padding-right: 18px;
-    padding-left: 36px;
+  .imageLabel {
     position: absolute;
     bottom: 35px;
-    right: 0;
     z-index: 1;
-    transition: 1s;
-    -webkit-transition: 1s;
     line-height: 25px;
     color: #fff;
-    filter: opacity(0.8);
-    background: linear-gradient(to left, #000 0%, rgba(255, 255, 255, 0) 100%);
 
-    .icon {
-      margin-right: 5px;
+    &.discussionReplyCount {
+      padding-right: 36px;
+      padding-left: 18px;
+      left: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+      @media @phone {
+        display: none;
+      }
     }
+
+    &.discussionViews {
+      padding-right: 18px;
+      padding-left: 36px;
+      right: 0;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+  }
+
+  .labelIcon {
+    margin-right: 5px;
   }
 
   &.Hidden {
