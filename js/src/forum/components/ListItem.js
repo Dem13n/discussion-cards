@@ -107,10 +107,11 @@ export default class listItem extends Component {
                     </div>
                   </Link>
                 </div>
-                : <div className="imageLabel discussionReplyCount">
-                  {icon('fas fa-comment', {className: 'labelIcon'})}
-                  {discussion.replyCount()}
-                </div>
+                : settings.Replies === 1 ?
+                  <div className="imageLabel discussionReplyCount">
+                    {icon('fas fa-comment', {className: 'labelIcon'})}
+                    {discussion.replyCount()}
+                  </div> : ''
               }
             </div>
           </div>
